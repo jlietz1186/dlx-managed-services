@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DLX Managed Services | Full-Service eCommerce & 3PL Solutions</title>
+<meta name="description" content="DLX Managed Services provides end-to-end eCommerce management, 3PL warehousing, and advertising services. 130,000 sq ft facility. 2M+ orders shipped. Everything in-house.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --blue: #2980b9;
+  --blue-dark: #1a5276;
+  --blue-light: #3498db;
+  --blue-glow: #5dade2;
+  --dark: #1c2833;
+  --dark-light: #2c3e50;
+  --charcoal: #333a42;
+  --white: #ffffff;
+  --off-white: #f8f9fa;
+  --gray-100: #f0f2f5;
+  --gray-200: #e5e8ec;
+  --gray-300: #d1d5db;
+  --gray-500: #6b7280;
+  --gray-700: #374151;
+  --gradient-blue: linear-gradient(135deg, #1a5276 0%, #2980b9 50%, #3498db 100%);
+  --gradient-dark: linear-gradient(135deg, #1c2833 0%, #2c3e50 100%);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--charcoal);
+  line-height: 1.7;
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--gray-200);
+  transition: box-shadow 0.3s;
+}
+.nav.scrolled { box-shadow: var(--shadow-md); }
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 2rem;
+}
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+.nav-logo svg { width: 44px; height: 44px; }
+.nav-logo-text { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--dark); line-height: 1.2; }
+.nav-logo-text span { color: var(--blue); }
+.nav-logo-sub { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gray-500); font-weight: 500; }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a { text-decoration: none; color: var(--gray-700); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+.nav-links a:hover { color: var(--blue); }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.75rem; border-radius: 8px;
+  font-weight: 600; font-size: 0.95rem; text-decoration: none;
+  transition: all 0.3s; cursor: pointer; border: none;
+}
+.btn-primary { background: var(--gradient-blue); color: var(--white); box-shadow: 0 4px 15px rgba(41,128,185,0.3); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(41,128,185,0.4); }
+.btn-outline { border: 2px solid var(--blue); color: var(--blue); background: transparent; }
+.btn-outline:hover { background: var(--blue); color: var(--white); }
+.btn-white { background: var(--white); color: var(--dark); box-shadow: var(--shadow-md); }
+.btn-white:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.btn-lg { padding: 1rem 2.25rem; font-size: 1.05rem; border-radius: 10px; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); transition: 0.3s; }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center;
+  background: var(--gradient-dark);
+  overflow: hidden;
+  padding-top: 80px;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(41,128,185,0.15) 0%, transparent 60%),
+              radial-gradient(circle at 20% 80%, rgba(93,173,226,0.1) 0%, transparent 50%);
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.03;
+  background-image: linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-inner {
+  position: relative; max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(41,128,185,0.15); border: 1px solid rgba(41,128,185,0.3);
+  padding: 0.4rem 1rem; border-radius: 50px;
+  font-size: 0.8rem; font-weight: 600; color: var(--blue-glow);
+  margin-bottom: 1.5rem;
+}
+.hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--blue-glow); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 800; line-height: 1.1;
+  color: var(--white); margin-bottom: 1.5rem;
+}
+.hero h1 .highlight { color: var(--blue-light); }
+.hero p { font-size: 1.15rem; color: rgba(255,255,255,0.7); margin-bottom: 2rem; max-width: 520px; line-height: 1.8; }
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-visual {
+  display: flex; justify-content: center; align-items: center;
+}
+.hero-stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; width: 100%;
+}
+.hero-stat-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px; padding: 1.75rem;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s, border-color 0.3s;
+}
+.hero-stat-card:hover { transform: translateY(-4px); border-color: rgba(41,128,185,0.4); }
+.hero-stat-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.25rem; font-weight: 800; color: var(--blue-light);
+  line-height: 1;
+}
+.hero-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem; line-height: 1.4; }
+
+/* ─── SECTIONS ─── */
+section { padding: 6rem 2rem; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  display: inline-block;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800; color: var(--dark); line-height: 1.2; margin-bottom: 1rem;
+}
+.section-subtitle { font-size: 1.1rem; color: var(--gray-500); max-width: 650px; line-height: 1.8; }
+.text-center { text-align: center; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* ─── ABOUT ─── */
+.about { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+.about-content p { margin-bottom: 1.25rem; color: var(--gray-700); font-size: 1.05rem; }
+.about-highlights { display: flex; flex-direction: column; gap: 1.25rem; }
+.about-highlight {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: var(--gray-100); border-radius: 12px; padding: 1.25rem;
+  border-left: 4px solid var(--blue);
+}
+.about-highlight-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: var(--gradient-blue); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 1.2rem;
+}
+.about-highlight h4 { font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; }
+.about-highlight p { font-size: 0.9rem; color: var(--gray-500); }
+
+/* ─── STATS BAR ─── */
+.stats-bar {
+  background: var(--gradient-dark); padding: 4rem 2rem;
+}
+.stats-bar-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+}
+.stat-item { text-align: center; }
+.stat-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.75rem; font-weight: 800; color: var(--blue-light);
+}
+.stat-label { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 0.25rem; }
+
+/* ─── SERVICES ─── */
+.services { background: var(--off-white); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem; margin-top: 3rem;
+}
+.service-card {
+  background: var(--white); border-radius: 16px; padding: 2rem;
+  border: 1px solid var(--gray-200);
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.service-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gradient-blue); opacity: 0; transition: opacity 0.3s;
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
+.service-card:hover::before { opacity: 1; }
+.service-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: linear-gradient(135deg, rgba(41,128,185,0.1), rgba(93,173,226,0.1));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin-bottom: 1.25rem;
+}
+.service-card h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--dark); margin-bottom: 0.75rem; }
+.service-card p { font-size: 0.95rem; color: var(--gray-500); line-height: 1.7; }
+
+/* ─── MARKETPLACES ─── */
+.marketplaces { background: var(--white); }
+.marketplace-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.25rem; margin-top: 3rem;
+}
+.marketplace-card {
+  background: var(--gray-100); border-radius: 12px; padding: 1.5rem 1rem;
+  text-align: center; border: 1px solid transparent;
+  transition: all 0.3s; cursor: default;
+}
+.marketplace-card:hover { border-color: var(--blue); background: white; box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.marketplace-card .mp-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.marketplace-card .mp-name { font-weight: 700; font-size: 0.85rem; color: var(--dark); }
+
+/* ─── WHY DLX ─── */
+.why-dlx { background: var(--off-white); }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+.why-card {
+  text-align: center; padding: 2.5rem 1.5rem;
+  background: var(--white); border-radius: 16px; border: 1px solid var(--gray-200);
+  transition: all 0.3s;
+}
+.why-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+.why-icon {
+  width: 64px; height: 64px; margin: 0 auto 1.25rem;
+  background: var(--gradient-blue); border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.75rem; color: white;
+}
+.why-card h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; margin-bottom: 0.75rem; color: var(--dark); }
+.why-card p { font-size: 0.95rem; color: var(--gray-500); }
+
+/* ─── IDEAL CLIENT ─── */
+.ideal { background: var(--gradient-dark); color: white; }
+.ideal .section-label { color: var(--blue-glow); }
+.ideal .section-title { color: white; }
+.ideal .section-subtitle { color: rgba(255,255,255,0.65); }
+.ideal-points { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; }
+.ideal-point {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 1.25rem;
+}
+.ideal-point .check {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: rgba(41,128,185,0.2); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue-glow); font-size: 0.9rem;
+}
+.ideal-point p { color: rgba(255,255,255,0.8); font-size: 0.95rem; }
+
+/* ─── FAQ ─── */
+.faq { background: var(--white); }
+.faq-list { max-width: 800px; margin: 3rem auto 0; }
+.faq-item { border-bottom: 1px solid var(--gray-200); }
+.faq-question {
+  width: 100%; display: flex; justify-content: space-between; align-items: center;
+  padding: 1.25rem 0; background: none; border: none; cursor: pointer;
+  font-size: 1.05rem; font-weight: 600; color: var(--dark); text-align: left;
+  font-family: 'Inter', sans-serif; gap: 1rem;
+}
+.faq-question:hover { color: var(--blue); }
+.faq-icon {
+  width: 28px; height: 28px; flex-shrink: 0;
+  border-radius: 50%; background: var(--gray-100);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.25rem; color: var(--blue);
+  transition: transform 0.3s, background 0.3s;
+}
+.faq-item.active .faq-icon { transform: rotate(45deg); background: var(--blue); color: white; }
+.faq-answer {
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+}
+.faq-item.active .faq-answer { max-height: 300px; padding-bottom: 1.25rem; }
+.faq-answer p { color: var(--gray-500); line-height: 1.8; font-size: 0.95rem; }
+
+/* ─── CTA ─── */
+.cta-section {
+  background: var(--gradient-blue); padding: 5rem 2rem; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1) 0%, transparent 60%);
+}
+.cta-section .section-inner { position: relative; }
+.cta-section h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800;
+  color: white; margin-bottom: 1rem;
+}
+.cta-section p { font-size: 1.15rem; color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ─── FOOTER ─── */
+.footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 4rem 2rem 2rem; }
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand p { margin-top: 1rem; font-size: 0.9rem; line-height: 1.7; max-width: 320px; }
+.footer h4 { color: white; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+.footer ul { list-style: none; }
+.footer ul li { margin-bottom: 0.5rem; }
+.footer ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+.footer ul a:hover { color: var(--blue-light); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem; display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 900px) {
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; flex-direction: column; padding: 1.5rem 2rem; border-bottom: 1px solid var(--gray-200); box-shadow: var(--shadow-md); }
+  .nav-links.open { display: flex; }
+  .hamburger { display: flex; }
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero p { margin-left: auto; margin-right: auto; }
+  .hero-ctas { justify-content: center; }
+  .hero-stats-grid { max-width: 400px; margin: 0 auto; }
+  .about-grid { grid-template-columns: 1fr; }
+  .stats-bar-inner { grid-template-columns: 1fr 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .ideal-points { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .stats-bar-inner { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .stat-number { font-size: 2rem; }
+  .hero-stats-grid { grid-template-columns: 1fr; }
+  .marketplace-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,8 90,30 90,70 50,92 10,70 10,30" fill="#2980b9"/>
+        <polygon points="50,8 90,30 50,52 10,30" fill="#3498db"/>
+        <polygon points="50,52 90,30 90,70 50,92" fill="#1a5276"/>
+        <polygon points="50,52 10,30 10,70 50,92" fill="#2471a3"/>
+        <rect x="30" y="22" width="40" height="30" rx="2" fill="#1c2833" opacity="0.85"/>
+      </svg>
+      <div>
+        <div class="nav-logo-text"><span>DLX</span> MANAGED</div>
+        <div class="nav-logo-sub">&mdash; Services &mdash;</div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#marketplaces">Marketplaces</a>
+      <a href="#why">Why DLX</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://calendly.com/brandon-dlxdeals/30min" target="_blank" class="btn btn-primary">Schedule a Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">100% In-House Team</div>
+      <h1>End-to-End <span class="highlight">eCommerce &amp; 3PL</span> Solutions That Scale</h1>
+      <p>From warehouse to web storefront, DLX Managed Services handles every piece of your eCommerce operation &mdash; pick &amp; pack, marketplace management, and advertising &mdash; all under one roof.</p>
+      <div class="hero-ctas">
+        <a href="https://calendly.com/brandon-dlxdeals/30min" target="_blank" class="btn btn-primary btn-lg">Schedule a Call &rarr;</a>
+        <a href="#services" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.3); color: white;">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-stats-grid">
+        <div class="hero-stat-card">
+          <div class="hero-stat-number">130K</div>
+          <div class="hero-stat-label">Sq Ft Warehouse Facility</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-number">2M+</div>
+          <div class="hero-stat-label">Orders Shipped</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-number">15+</div>
+          <div class="hero-stat-label">Years Industry Experience</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-number">6</div>
+          <div class="hero-stat-label">Years in Business</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <span class="section-label">Who We Are</span>
+    <h2 class="section-title">Your Full-Service eCommerce Partner</h2>
+    <div class="about-grid">
+      <div class="about-content">
+        <p>DLX Managed Services is a full-service eCommerce operations company based in <strong>North Canton, Ohio</strong>. We combine 3PL warehousing, marketplace management, and advertising under one roof &mdash; so you get a single partner who understands your entire business.</p>
+        <p>With <strong>15+ years of industry expertise</strong> and a 130,000 sq ft fulfillment center, we work with brands doing high seven figures a year as well as emerging brands we're passionate about growing alongside.</p>
+        <p>Every service package is <strong>crafted specifically for each client's needs</strong>. No cookie-cutter solutions. No outsourcing. Just a dedicated in-house team focused on your success.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="about-highlight">
+          <div class="about-highlight-icon">&#9878;</div>
+          <div>
+            <h4>Everything In-House</h4>
+            <p>We never outsource. Your brand is handled by our team, in our facility, every step of the way.</p>
+          </div>
+        </div>
+        <div class="about-highlight">
+          <div class="about-highlight-icon">&#9881;</div>
+          <div>
+            <h4>Custom-Built Packages</h4>
+            <p>Every client gets a service package crafted exactly to their needs &mdash; no one-size-fits-all plans.</p>
+          </div>
+        </div>
+        <div class="about-highlight">
+          <div class="about-highlight-icon">&#9733;</div>
+          <div>
+            <h4>Startup to Scale</h4>
+            <p>Whether you're just launching or doing high 7-figures, we meet you where you are and grow with you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS BAR ─── -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item">
+      <div class="stat-number" data-target="130000" data-suffix="+" data-display="130K+">130K+</div>
+      <div class="stat-label">Sq Ft Facility</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">2M+</div>
+      <div class="stat-label">Orders Shipped</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">15+</div>
+      <div class="stat-label">Years of Expertise</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">In-House Operations</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SERVICES ─── -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label">What We Do</span>
+      <h2 class="section-title">Comprehensive eCommerce Services</h2>
+      <p class="section-subtitle mx-auto">From warehouse operations to digital advertising, we handle every aspect of selling online so you can focus on building your brand.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">&#128230;</div>
+        <h3>Pick &amp; Pack Fulfillment</h3>
+        <p>Our 130,000 sq ft North Canton facility handles your entire fulfillment operation with speed and accuracy. Every order is picked, packed, and shipped by our in-house team with meticulous attention to detail.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">&#128259;</div>
+        <h3>Returns Processing</h3>
+        <p>Hassle-free returns management that protects your bottom line. We handle inspections, restocking, and customer communications &mdash; turning returns into an opportunity to build loyalty.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">&#128202;</div>
+        <h3>Marketplace Management</h3>
+        <p>Full-service management across Amazon, Walmart, Best Buy, Shopify, eBay, Newegg, and Amazon Renewed. Listing optimization, pricing strategy, and day-to-day operations &mdash; all handled.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">&#128200;</div>
+        <h3>Advertising Management</h3>
+        <p>Data-driven advertising on and off Amazon. PPC campaigns, DSP, sponsored brands, and off-platform strategies designed to maximize ROAS and drive profitable growth.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">&#128218;</div>
+        <h3>Listing Optimization</h3>
+        <p>Conversion-focused product listings with optimized titles, bullet points, A+ content, and backend keywords. We craft every listing to rank higher and convert better.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">&#128179;</div>
+        <h3>Inventory Management</h3>
+        <p>Real-time inventory tracking, demand forecasting, and replenishment planning across all channels. Never miss a sale due to stockouts or waste money on excess inventory.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">&#9734;</div>
+        <h3>Brand Strategy &amp; Growth</h3>
+        <p>Strategic planning and execution to grow your brand from launch to scale. We identify opportunities, optimize performance, and build long-term growth trajectories.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">&#128274;</div>
+        <h3>Account Health &amp; Compliance</h3>
+        <p>Proactive monitoring and management of your seller accounts. We keep your accounts healthy, handle compliance issues, and protect your brand from threats.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARKETPLACES ─── -->
+<section class="marketplaces" id="marketplaces">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label">Where We Sell</span>
+      <h2 class="section-title">Marketplaces We Manage</h2>
+      <p class="section-subtitle mx-auto">We manage your presence across every major eCommerce platform, giving your brand maximum reach and revenue potential.</p>
+    </div>
+    <div class="marketplace-grid">
+      <div class="marketplace-card">
+        <div class="mp-icon">&#128722;</div>
+        <div class="mp-name">Amazon</div>
+      </div>
+      <div class="marketplace-card">
+        <div class="mp-icon">&#127978;</div>
+        <div class="mp-name">Walmart</div>
+      </div>
+      <div class="marketplace-card">
+        <div class="mp-icon">&#128187;</div>
+        <div class="mp-name">Best Buy</div>
+      </div>
+      <div class="marketplace-card">
+        <div class="mp-icon">&#128722;</div>
+        <div class="mp-name">Shopify</div>
+      </div>
+      <div class="marketplace-card">
+        <div class="mp-icon">&#127760;</div>
+        <div class="mp-name">Newegg</div>
+      </div>
+      <div class="marketplace-card">
+        <div class="mp-icon">&#128176;</div>
+        <div class="mp-name">eBay</div>
+      </div>
+      <div class="marketplace-card">
+        <div class="mp-icon">&#9851;</div>
+        <div class="mp-name">Amazon Renewed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY DLX ─── -->
+<section class="why-dlx" id="why">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label">The DLX Difference</span>
+      <h2 class="section-title">Why Brands Choose DLX</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">&#127919;</div>
+        <h3>Single Partner, Full Solution</h3>
+        <p>Stop juggling multiple vendors. We handle warehousing, marketplace sales, and advertising all in one place &mdash; creating seamless operations from end to end.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">&#128588;</div>
+        <h3>Zero Outsourcing</h3>
+        <p>Every task is handled by our in-house team at our own facility. Your brand never gets passed off to a third party you've never met.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">&#128200;</div>
+        <h3>Built to Grow With You</h3>
+        <p>Whether you're just starting out or scaling past 7 figures, our custom service packages evolve with your business at every stage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── IDEAL CLIENT ─── -->
+<section class="ideal">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label">Is DLX Right For You?</span>
+      <h2 class="section-title">Who We Work With</h2>
+      <p class="section-subtitle mx-auto">We partner with brands at every stage of growth. If any of these sound like you, let's talk.</p>
+    </div>
+    <div class="ideal-points">
+      <div class="ideal-point">
+        <div class="check">&#10003;</div>
+        <p>You're an eCommerce brand selling on Amazon, Walmart, or other major marketplaces and want expert management.</p>
+      </div>
+      <div class="ideal-point">
+        <div class="check">&#10003;</div>
+        <p>You need reliable 3PL fulfillment with pick &amp; pack, returns processing, and real-time inventory visibility.</p>
+      </div>
+      <div class="ideal-point">
+        <div class="check">&#10003;</div>
+        <p>You're spending on advertising but aren't sure you're getting the best return on your investment.</p>
+      </div>
+      <div class="ideal-point">
+        <div class="check">&#10003;</div>
+        <p>You're tired of managing multiple vendors and want a single partner who handles everything under one roof.</p>
+      </div>
+      <div class="ideal-point">
+        <div class="check">&#10003;</div>
+        <p>You're a high-7-figure brand looking for operational excellence, or a newer brand looking for a partner to grow with.</p>
+      </div>
+      <div class="ideal-point">
+        <div class="check">&#10003;</div>
+        <p>You value transparency, in-house teams, and custom-built strategies over cookie-cutter agency packages.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label">Common Questions</span>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+          What services does DLX Managed Services offer?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>We provide full-service 3PL warehousing (pick &amp; pack, returns processing, inventory management), marketplace management across Amazon, Walmart, Best Buy, Shopify, Newegg, eBay, and Amazon Renewed, as well as advertising management on and off Amazon. Every service is handled 100% in-house at our North Canton, Ohio facility.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+          Do you outsource any of your services?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Never. Everything we do is handled by our in-house team at our own 130,000 sq ft facility. Your brand is never passed off to a third party. This ensures quality control, accountability, and seamless communication across all services.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+          Do I need to use all your services, or can I pick and choose?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Every client's service package is crafted specifically for their needs. You can use our 3PL services alone, marketplace management alone, advertising alone, or any combination. We build around what your brand actually needs.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+          What size brands do you work with?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>We work with brands at every stage &mdash; from those just starting out to established brands doing high seven figures annually. We're passionate about growing alongside emerging brands and have the infrastructure to support large-scale operations.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+          Where is your warehouse located?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Our 130,000 sq ft fulfillment center is located in North Canton, Ohio. This central location provides efficient shipping coverage to the majority of the U.S. population.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+          How do you handle advertising?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>We manage advertising both on Amazon (PPC, Sponsored Brands, DSP) and off-Amazon platforms. Our approach is data-driven and focused on profitable growth &mdash; we optimize for ROAS and real profitability, not vanity metrics.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+          What marketplaces do you manage?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>We manage seller accounts on Amazon, Walmart, Best Buy, Shopify, Newegg, eBay, and Amazon Renewed. We can launch you on new platforms or optimize your existing presence across all of them.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+          How long have you been in business?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>DLX Managed Services has been in business for 6 years, but our team brings over 15 years of combined industry experience. We've shipped over 2 million orders and continue to grow with our clients every day.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+          How do I get started?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Schedule a call with our team and we'll learn about your brand, your goals, and your pain points. From there, we'll put together a custom proposal tailored to exactly what you need. There's no obligation &mdash; just a conversation to see if we're the right fit.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+          Are there long-term contracts?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>We believe in earning your business every month. Our contract terms are discussed during your initial consultation and are designed to be fair and flexible. We want you to stay because of results, not because of a contract.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="cta-section" id="contact">
+  <div class="section-inner">
+    <h2>Ready to Scale Your Brand?</h2>
+    <p>Let's talk about how DLX Managed Services can streamline your operations and accelerate your growth. Schedule a free consultation today.</p>
+    <div class="cta-buttons">
+      <a href="https://calendly.com/brandon-dlxdeals/30min" target="_blank" class="btn btn-white btn-lg">Schedule a Call &rarr;</a>
+      <a href="mailto:brandon@dlxdeals.com" class="btn btn-lg" style="border: 2px solid rgba(255,255,255,0.4); color: white;">Email Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="margin-bottom: 0.5rem;">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 40px; height: 40px;">
+            <polygon points="50,8 90,30 90,70 50,92 10,70 10,30" fill="#2980b9"/>
+            <polygon points="50,8 90,30 50,52 10,30" fill="#3498db"/>
+            <polygon points="50,52 90,30 90,70 50,92" fill="#1a5276"/>
+            <polygon points="50,52 10,30 10,70 50,92" fill="#2471a3"/>
+            <rect x="30" y="22" width="40" height="30" rx="2" fill="#1c2833" opacity="0.85"/>
+          </svg>
+          <div>
+            <div class="nav-logo-text"><span>DLX</span> MANAGED</div>
+            <div class="nav-logo-sub">&mdash; Services &mdash;</div>
+          </div>
+        </a>
+        <p>Full-service eCommerce operations, 3PL warehousing, and advertising management &mdash; all under one roof in North Canton, Ohio.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Pick &amp; Pack</a></li>
+          <li><a href="#services">Returns Processing</a></li>
+          <li><a href="#services">Marketplace Management</a></li>
+          <li><a href="#services">Advertising</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Marketplaces</h4>
+        <ul>
+          <li><a href="#marketplaces">Amazon</a></li>
+          <li><a href="#marketplaces">Walmart</a></li>
+          <li><a href="#marketplaces">Best Buy</a></li>
+          <li><a href="#marketplaces">Shopify &amp; More</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:brandon@dlxdeals.com">brandon@dlxdeals.com</a></li>
+          <li><a href="https://calendly.com/brandon-dlxdeals/30min" target="_blank">Schedule a Call</a></li>
+          <li><span style="color: rgba(255,255,255,0.5);">North Canton, OH</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 DLX Managed Services. All rights reserved.</span>
+      <span>North Canton, Ohio</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('navLinks').classList.remove('open');
+    }
+  });
+});
+
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.service-card, .why-card, .marketplace-card, .about-highlight, .ideal-point').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
