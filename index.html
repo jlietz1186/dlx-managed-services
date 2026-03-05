@@ -6,370 +6,353 @@
 <title>DLX Managed Services | Full-Service eCommerce & 3PL Solutions</title>
 <meta name="description" content="DLX Managed Services provides end-to-end eCommerce management, 3PL warehousing, and advertising services. 130,000 sq ft facility. 2M+ orders shipped. Everything in-house.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
 :root {
   --blue: #2980b9;
   --blue-dark: #1a5276;
+  --blue-deeper: #0f3857;
   --blue-light: #3498db;
   --blue-glow: #5dade2;
-  --dark: #1c2833;
+  --blue-soft: #ebf5fb;
+  --dark: #0a1628;
+  --dark-mid: #1c2833;
   --dark-light: #2c3e50;
   --charcoal: #333a42;
   --white: #ffffff;
-  --off-white: #f8f9fa;
+  --off-white: #f7f9fc;
+  --gray-50: #fafbfd;
   --gray-100: #f0f2f5;
   --gray-200: #e5e8ec;
   --gray-300: #d1d5db;
   --gray-500: #6b7280;
+  --gray-600: #4b5563;
   --gray-700: #374151;
+  --accent: #ff8c42;
+  --green: #27ae60;
   --gradient-blue: linear-gradient(135deg, #1a5276 0%, #2980b9 50%, #3498db 100%);
-  --gradient-dark: linear-gradient(135deg, #1c2833 0%, #2c3e50 100%);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
-  --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
-  --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+  --gradient-dark: linear-gradient(160deg, #0a1628 0%, #1c2833 40%, #1a3a5c 100%);
+  --gradient-card: linear-gradient(135deg, #ffffff 0%, #f7f9fc 100%);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
+  --shadow-xl: 0 25px 60px rgba(0,0,0,0.12);
+  --shadow-blue: 0 8px 30px rgba(41,128,185,0.25);
+  --radius: 16px;
+  --radius-lg: 24px;
 }
-
 html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--charcoal); line-height: 1.7; background: var(--white); overflow-x: hidden; }
 
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: var(--charcoal);
-  line-height: 1.7;
-  background: var(--white);
-  overflow-x: hidden;
-}
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(0.95); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
 
-/* ─── NAV ─── */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--gray-200);
-  transition: box-shadow 0.3s;
-}
-.nav.scrolled { box-shadow: var(--shadow-md); }
-.nav-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.75rem 2rem;
-}
+/* ── NAV ── */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.92); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border-bottom: 1px solid rgba(0,0,0,0.04); transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+.nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.06); }
+.nav-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 2.5rem; }
 .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-.nav-logo svg { width: 44px; height: 44px; }
-.nav-logo-text { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--dark); line-height: 1.2; }
+.nav-logo svg { width: 42px; height: 42px; }
+.nav-logo-text { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--dark); line-height: 1.15; }
 .nav-logo-text span { color: var(--blue); }
-.nav-logo-sub { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gray-500); font-weight: 500; }
-.nav-links { display: flex; align-items: center; gap: 2rem; }
-.nav-links a { text-decoration: none; color: var(--gray-700); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
-.nav-links a:hover { color: var(--blue); }
-.btn {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.75rem 1.75rem; border-radius: 8px;
-  font-weight: 600; font-size: 0.95rem; text-decoration: none;
-  transition: all 0.3s; cursor: pointer; border: none;
-}
-.btn-primary { background: var(--gradient-blue); color: var(--white); box-shadow: 0 4px 15px rgba(41,128,185,0.3); }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(41,128,185,0.4); }
+.nav-logo-sub { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-500); font-weight: 600; }
+.nav-links { display: flex; align-items: center; gap: 2.25rem; }
+.nav-links a { text-decoration: none; color: var(--gray-600); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; position: relative; }
+.nav-links a:not(.btn):hover { color: var(--blue); }
+.nav-links a:not(.btn)::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--blue); transition: width 0.3s; border-radius: 1px; }
+.nav-links a:not(.btn):hover::after { width: 100%; }
+
+/* ── BUTTONS ── */
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.6rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); cursor: pointer; border: none; letter-spacing: -0.01em; }
+.btn-primary { background: var(--gradient-blue); color: var(--white); box-shadow: var(--shadow-blue); position: relative; overflow: hidden; }
+.btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(41,128,185,0.35); }
 .btn-outline { border: 2px solid var(--blue); color: var(--blue); background: transparent; }
-.btn-outline:hover { background: var(--blue); color: var(--white); }
-.btn-white { background: var(--white); color: var(--dark); box-shadow: var(--shadow-md); }
-.btn-white:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-.btn-lg { padding: 1rem 2.25rem; font-size: 1.05rem; border-radius: 10px; }
+.btn-outline:hover { background: var(--blue); color: var(--white); transform: translateY(-2px); }
+.btn-white { background: var(--white); color: var(--dark); box-shadow: var(--shadow-lg); }
+.btn-white:hover { transform: translateY(-3px); box-shadow: var(--shadow-xl); }
+.btn-ghost { border: 2px solid rgba(255,255,255,0.25); color: white; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); }
+.btn-ghost:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
+.btn-lg { padding: 0.95rem 2.25rem; font-size: 1rem; border-radius: 12px; }
+.btn svg { width: 18px; height: 18px; }
 
 .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); transition: 0.3s; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); transition: 0.3s; border-radius: 2px; }
 
-/* ─── HERO ─── */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex; align-items: center;
-  background: var(--gradient-dark);
-  overflow: hidden;
-  padding-top: 80px;
-}
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(41,128,185,0.15) 0%, transparent 60%),
-              radial-gradient(circle at 20% 80%, rgba(93,173,226,0.1) 0%, transparent 50%);
-}
-.hero-grid {
-  position: absolute; inset: 0; opacity: 0.03;
-  background-image: linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-.hero-inner {
-  position: relative; max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: rgba(41,128,185,0.15); border: 1px solid rgba(41,128,185,0.3);
-  padding: 0.4rem 1rem; border-radius: 50px;
-  font-size: 0.8rem; font-weight: 600; color: var(--blue-glow);
-  margin-bottom: 1.5rem;
-}
-.hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--blue-glow); border-radius: 50%; animation: pulse 2s infinite; }
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-.hero h1 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2.5rem, 5vw, 3.75rem);
-  font-weight: 800; line-height: 1.1;
-  color: var(--white); margin-bottom: 1.5rem;
-}
-.hero h1 .highlight { color: var(--blue-light); }
-.hero p { font-size: 1.15rem; color: rgba(255,255,255,0.7); margin-bottom: 2rem; max-width: 520px; line-height: 1.8; }
+/* ── HERO ── */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; background: var(--gradient-dark); overflow: hidden; padding-top: 80px; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 65% 20%, rgba(41,128,185,0.12) 0%, transparent 55%), radial-gradient(ellipse at 20% 80%, rgba(93,173,226,0.08) 0%, transparent 45%), radial-gradient(ellipse at 80% 80%, rgba(255,140,66,0.04) 0%, transparent 40%); }
+.hero-grid-bg { position: absolute; inset: 0; opacity: 0.025; background-image: linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px); background-size: 80px 80px; }
+.hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+.hero-orb-1 { width: 400px; height: 400px; background: rgba(41,128,185,0.08); top: -100px; right: -50px; animation: float 8s ease-in-out infinite; }
+.hero-orb-2 { width: 300px; height: 300px; background: rgba(255,140,66,0.05); bottom: -80px; left: -50px; animation: float 10s ease-in-out infinite reverse; }
+.hero-inner { position: relative; max-width: 1280px; margin: 0 auto; padding: 5rem 2.5rem 4rem; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(41,128,185,0.12); border: 1px solid rgba(41,128,185,0.2); padding: 0.45rem 1.1rem; border-radius: 50px; font-size: 0.78rem; font-weight: 600; color: var(--blue-glow); margin-bottom: 1.75rem; backdrop-filter: blur(10px); }
+.hero-badge-dot { width: 8px; height: 8px; background: var(--blue-glow); border-radius: 50%; animation: pulse 2s infinite; box-shadow: 0 0 8px rgba(93,173,226,0.5); }
+.hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.75rem, 5vw, 4rem); font-weight: 800; line-height: 1.08; color: var(--white); margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+.hero h1 .highlight { background: linear-gradient(135deg, var(--blue-light), var(--blue-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-desc { font-size: 1.15rem; color: rgba(255,255,255,0.6); margin-bottom: 2.25rem; max-width: 540px; line-height: 1.8; }
 .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-.hero-visual {
-  display: flex; justify-content: center; align-items: center;
-}
-.hero-stats-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; width: 100%;
-}
-.hero-stat-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px; padding: 1.75rem;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s, border-color 0.3s;
-}
-.hero-stat-card:hover { transform: translateY(-4px); border-color: rgba(41,128,185,0.4); }
-.hero-stat-number {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 2.25rem; font-weight: 800; color: var(--blue-light);
-  line-height: 1;
-}
-.hero-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem; line-height: 1.4; }
+.hero-trust { display: flex; align-items: center; gap: 1.5rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); }
+.hero-trust-item { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.45); font-size: 0.8rem; font-weight: 500; }
+.hero-trust-item svg { width: 18px; height: 18px; opacity: 0.5; }
 
-/* ─── SECTIONS ─── */
-section { padding: 6rem 2rem; }
-.section-inner { max-width: 1100px; margin: 0 auto; }
-.section-label {
-  display: inline-block;
-  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--blue); margin-bottom: 0.75rem;
-}
-.section-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  font-weight: 800; color: var(--dark); line-height: 1.2; margin-bottom: 1rem;
-}
-.section-subtitle { font-size: 1.1rem; color: var(--gray-500); max-width: 650px; line-height: 1.8; }
+.hero-visual { position: relative; }
+.hero-image-wrapper { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); }
+.hero-image-wrapper img { width: 100%; height: 420px; object-fit: cover; display: block; }
+.hero-image-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(10,22,40,0.7) 100%); }
+.hero-image-badge { position: absolute; bottom: 1.25rem; left: 1.25rem; right: 1.25rem; display: flex; gap: 0.75rem; }
+.hero-image-stat { flex: 1; background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 0.9rem; text-align: center; }
+.hero-image-stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 800; color: white; line-height: 1; }
+.hero-image-stat-label { font-size: 0.65rem; color: rgba(255,255,255,0.6); margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+.hero-float-card { position: absolute; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-radius: 14px; padding: 1rem 1.25rem; box-shadow: 0 20px 50px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 0.75rem; animation: float 6s ease-in-out infinite; z-index: 2; }
+.hero-float-card-1 { top: -20px; right: -30px; animation-delay: 0s; }
+.hero-float-card-2 { bottom: 80px; left: -40px; animation-delay: 3s; }
+.hero-float-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+.hero-float-icon.blue { background: var(--blue-soft); }
+.hero-float-icon.orange { background: #fff3e6; }
+.hero-float-text { font-size: 0.78rem; font-weight: 700; color: var(--dark); line-height: 1.3; }
+.hero-float-sub { font-size: 0.68rem; font-weight: 500; color: var(--gray-500); }
+
+/* ── SECTIONS ── */
+section { padding: 7rem 2.5rem; }
+.section-inner { max-width: 1180px; margin: 0 auto; }
+.section-label { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+.section-label::before { content: ''; width: 24px; height: 2px; background: var(--blue); border-radius: 1px; }
+.section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 800; color: var(--dark); line-height: 1.15; margin-bottom: 1rem; letter-spacing: -0.02em; }
+.section-subtitle { font-size: 1.08rem; color: var(--gray-500); max-width: 620px; line-height: 1.8; }
 .text-center { text-align: center; }
 .mx-auto { margin-left: auto; margin-right: auto; }
 
-/* ─── ABOUT ─── */
+/* ── LOGO BAR ── */
+.logo-bar { background: var(--off-white); padding: 3rem 2.5rem; border-top: 1px solid var(--gray-100); border-bottom: 1px solid var(--gray-100); }
+.logo-bar-inner { max-width: 1180px; margin: 0 auto; text-align: center; }
+.logo-bar-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 2rem; }
+.logo-bar-grid { display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+.logo-bar-item { display: flex; align-items: center; justify-content: center; opacity: 0.55; transition: opacity 0.3s; cursor: default; }
+.logo-bar-item:hover { opacity: 1; }
+.logo-bar-item svg { height: 28px; width: auto; }
+
+/* ── ABOUT ── */
 .about { background: var(--white); }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
-.about-content p { margin-bottom: 1.25rem; color: var(--gray-700); font-size: 1.05rem; }
-.about-highlights { display: flex; flex-direction: column; gap: 1.25rem; }
-.about-highlight {
-  display: flex; gap: 1rem; align-items: flex-start;
-  background: var(--gray-100); border-radius: 12px; padding: 1.25rem;
-  border-left: 4px solid var(--blue);
-}
-.about-highlight-icon {
-  width: 44px; height: 44px; flex-shrink: 0;
-  background: var(--gradient-blue); border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  color: white; font-size: 1.2rem;
-}
-.about-highlight h4 { font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; }
-.about-highlight p { font-size: 0.9rem; color: var(--gray-500); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3.5rem; }
+.about-content p { margin-bottom: 1.25rem; color: var(--gray-600); font-size: 1.05rem; line-height: 1.85; }
+.about-content strong { color: var(--dark); font-weight: 700; }
+.about-image-section { position: relative; }
+.about-image { width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-xl); }
+.about-image img { width: 100%; height: 380px; object-fit: cover; display: block; }
+.about-badge { position: absolute; bottom: -20px; right: -20px; background: white; border-radius: var(--radius); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 0.75rem; }
+.about-badge-icon { width: 48px; height: 48px; background: var(--blue-soft); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.about-badge-text { font-weight: 800; font-size: 1.3rem; color: var(--dark); font-family: 'Space Grotesk', sans-serif; }
+.about-badge-sub { font-size: 0.72rem; color: var(--gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 
-/* ─── STATS BAR ─── */
-.stats-bar {
-  background: var(--gradient-dark); padding: 4rem 2rem;
-}
-.stats-bar-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
-}
-.stat-item { text-align: center; }
-.stat-number {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 2.75rem; font-weight: 800; color: var(--blue-light);
-}
-.stat-label { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 0.25rem; }
+/* ── STATS ── */
+.stats-bar { background: var(--gradient-dark); padding: 5rem 2.5rem; position: relative; overflow: hidden; }
+.stats-bar::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(41,128,185,0.1) 0%, transparent 60%); }
+.stats-bar-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; position: relative; }
+.stat-item { text-align: center; padding: 1.5rem; border-radius: var(--radius); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+.stat-icon { width: 48px; height: 48px; margin: 0 auto 1rem; background: rgba(41,128,185,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.stat-icon svg { width: 24px; height: 24px; color: var(--blue-glow); }
+.stat-number { font-family: 'Space Grotesk', sans-serif; font-size: 2.75rem; font-weight: 800; color: white; line-height: 1; }
+.stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.35rem; font-weight: 500; }
 
-/* ─── SERVICES ─── */
-.services { background: var(--off-white); }
-.services-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem; margin-top: 3rem;
-}
-.service-card {
-  background: var(--white); border-radius: 16px; padding: 2rem;
-  border: 1px solid var(--gray-200);
-  transition: all 0.3s; position: relative; overflow: hidden;
-}
-.service-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--gradient-blue); opacity: 0; transition: opacity 0.3s;
-}
+/* ── SERVICES ── */
+.services { background: var(--off-white); position: relative; }
+.services::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gray-200), transparent); }
+.services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+.service-card { background: var(--white); border-radius: var(--radius); padding: 2.25rem; border: 1px solid var(--gray-200); transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; display: flex; gap: 1.5rem; }
+.service-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; background: var(--gradient-blue); opacity: 0; transition: opacity 0.3s; }
 .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
 .service-card:hover::before { opacity: 1; }
-.service-icon {
-  width: 52px; height: 52px; border-radius: 12px;
-  background: linear-gradient(135deg, rgba(41,128,185,0.1), rgba(93,173,226,0.1));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem; margin-bottom: 1.25rem;
-}
-.service-card h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--dark); margin-bottom: 0.75rem; }
-.service-card p { font-size: 0.95rem; color: var(--gray-500); line-height: 1.7; }
+.service-icon-wrap { width: 56px; height: 56px; flex-shrink: 0; border-radius: 14px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+.service-icon-wrap svg { width: 28px; height: 28px; transition: all 0.3s; }
+.si-blue { background: var(--blue-soft); }
+.si-blue svg { color: var(--blue); }
+.si-orange { background: #fff6ed; }
+.si-orange svg { color: var(--accent); }
+.si-green { background: #eafaf1; }
+.si-green svg { color: var(--green); }
+.si-purple { background: #f3edf7; }
+.si-purple svg { color: #8e44ad; }
+.service-card:hover .service-icon-wrap { transform: scale(1.08); }
+.service-card h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--dark); margin-bottom: 0.5rem; }
+.service-card p { font-size: 0.92rem; color: var(--gray-500); line-height: 1.75; }
 
-/* ─── MARKETPLACES ─── */
-.marketplaces { background: var(--white); }
-.marketplace-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1.25rem; margin-top: 3rem;
-}
-.marketplace-card {
-  background: var(--gray-100); border-radius: 12px; padding: 1.5rem 1rem;
-  text-align: center; border: 1px solid transparent;
-  transition: all 0.3s; cursor: default;
-}
-.marketplace-card:hover { border-color: var(--blue); background: white; box-shadow: var(--shadow-md); transform: translateY(-3px); }
-.marketplace-card .mp-logo { display: flex; align-items: center; justify-content: center; height: 48px; margin-bottom: 0.75rem; }
-.marketplace-card .mp-logo svg { max-height: 44px; width: auto; }
-.marketplace-card .mp-name { font-weight: 700; font-size: 0.85rem; color: var(--dark); }
+/* ── WAREHOUSE ── */
+.warehouse { background: var(--white); }
+.warehouse-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3.5rem; align-items: center; }
+.warehouse-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.warehouse-img { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); }
+.warehouse-img img { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s; }
+.warehouse-img:hover img { transform: scale(1.05); }
+.warehouse-img.tall { grid-row: span 2; }
+.warehouse-img.tall img { height: 100%; min-height: 416px; }
+.warehouse-features { display: flex; flex-direction: column; gap: 1.25rem; }
+.wh-feature { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem; background: var(--off-white); border-radius: 14px; border: 1px solid var(--gray-100); transition: all 0.3s; }
+.wh-feature:hover { background: white; box-shadow: var(--shadow-md); border-color: var(--blue-soft); }
+.wh-feature-icon { width: 44px; height: 44px; flex-shrink: 0; background: var(--gradient-blue); border-radius: 11px; display: flex; align-items: center; justify-content: center; }
+.wh-feature-icon svg { width: 22px; height: 22px; color: white; }
+.wh-feature h4 { font-weight: 700; color: var(--dark); font-size: 0.95rem; margin-bottom: 0.25rem; }
+.wh-feature p { font-size: 0.85rem; color: var(--gray-500); line-height: 1.6; }
 
-/* ─── WHY DLX ─── */
-.why-dlx { background: var(--off-white); }
-.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
-.why-card {
-  text-align: center; padding: 2.5rem 1.5rem;
-  background: var(--white); border-radius: 16px; border: 1px solid var(--gray-200);
-  transition: all 0.3s;
-}
-.why-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
-.why-icon {
-  width: 64px; height: 64px; margin: 0 auto 1.25rem;
-  background: var(--gradient-blue); border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.75rem; color: white;
-}
-.why-card h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; margin-bottom: 0.75rem; color: var(--dark); }
-.why-card p { font-size: 0.95rem; color: var(--gray-500); }
+/* ── INTEGRATIONS (ShipHero/API/EDI) ── */
+.integrations { background: var(--gradient-dark); color: white; position: relative; overflow: hidden; }
+.integrations::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(41,128,185,0.1) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(255,140,66,0.05) 0%, transparent 40%); }
+.integrations .section-inner { position: relative; }
+.integrations .section-label { color: var(--blue-glow); }
+.integrations .section-label::before { background: var(--blue-glow); }
+.integrations .section-title { color: white; }
+.integrations .section-subtitle { color: rgba(255,255,255,0.55); }
+.integ-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; margin-top: 3.5rem; }
+.integ-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 2.25rem; transition: all 0.4s; position: relative; overflow: hidden; }
+.integ-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue-light), var(--blue-glow)); opacity: 0; transition: opacity 0.3s; }
+.integ-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(41,128,185,0.3); transform: translateY(-4px); }
+.integ-card:hover::before { opacity: 1; }
+.integ-icon { width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+.integ-icon.wms { background: linear-gradient(135deg, rgba(41,128,185,0.2), rgba(93,173,226,0.15)); }
+.integ-icon.api { background: linear-gradient(135deg, rgba(255,140,66,0.2), rgba(255,170,100,0.15)); }
+.integ-icon.edi { background: linear-gradient(135deg, rgba(39,174,96,0.2), rgba(46,204,113,0.15)); }
+.integ-icon svg { width: 30px; height: 30px; }
+.integ-card h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.2rem; color: white; margin-bottom: 0.75rem; }
+.integ-card p { font-size: 0.92rem; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 1.25rem; }
+.integ-features { display: flex; flex-direction: column; gap: 0.5rem; }
+.integ-feat { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+.integ-feat svg { width: 16px; height: 16px; color: var(--blue-glow); flex-shrink: 0; }
 
-/* ─── IDEAL CLIENT ─── */
-.ideal { background: var(--gradient-dark); color: white; }
-.ideal .section-label { color: var(--blue-glow); }
-.ideal .section-title { color: white; }
-.ideal .section-subtitle { color: rgba(255,255,255,0.65); }
-.ideal-points { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; }
-.ideal-point {
-  display: flex; gap: 1rem; align-items: flex-start;
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px; padding: 1.25rem;
-}
-.ideal-point .check {
-  width: 28px; height: 28px; flex-shrink: 0;
-  background: rgba(41,128,185,0.2); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--blue-glow); font-size: 0.9rem;
-}
-.ideal-point p { color: rgba(255,255,255,0.8); font-size: 0.95rem; }
+/* ── MARKETPLACES ── */
+.marketplaces { background: var(--off-white); }
+.marketplace-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1.25rem; margin-top: 3rem; }
+.marketplace-card { background: white; border-radius: var(--radius); padding: 1.75rem 1rem; text-align: center; border: 1px solid var(--gray-200); transition: all 0.35s; cursor: default; }
+.marketplace-card:hover { border-color: var(--blue); box-shadow: var(--shadow-lg); transform: translateY(-5px); }
+.mp-logo { display: flex; align-items: center; justify-content: center; height: 48px; margin-bottom: 0.75rem; }
+.mp-logo svg { max-height: 40px; width: auto; }
+.marketplace-card .mp-name { font-weight: 700; font-size: 0.8rem; color: var(--dark); }
 
-/* ─── FAQ ─── */
+/* ── WHY DLX ── */
+.why-dlx { background: var(--white); }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; margin-top: 3.5rem; }
+.why-card { text-align: center; padding: 2.75rem 2rem; background: var(--gradient-card); border-radius: var(--radius); border: 1px solid var(--gray-200); transition: all 0.4s; position: relative; overflow: hidden; }
+.why-card::after { content: ''; position: absolute; bottom: 0; left: 20%; right: 20%; height: 3px; background: var(--gradient-blue); border-radius: 3px 3px 0 0; opacity: 0; transition: all 0.3s; }
+.why-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-5px); border-color: transparent; }
+.why-card:hover::after { opacity: 1; left: 0; right: 0; }
+.why-icon { width: 68px; height: 68px; margin: 0 auto 1.5rem; background: var(--gradient-blue); border-radius: 18px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-blue); }
+.why-icon svg { width: 32px; height: 32px; color: white; }
+.why-card h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; margin-bottom: 0.75rem; color: var(--dark); font-size: 1.1rem; }
+.why-card p { font-size: 0.92rem; color: var(--gray-500); line-height: 1.7; }
+
+/* ── IDEAL CLIENT ── */
+.ideal { background: var(--off-white); }
+.ideal-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; align-items: start; }
+.ideal-points { display: flex; flex-direction: column; gap: 1rem; }
+.ideal-point { display: flex; gap: 1rem; align-items: flex-start; background: white; border: 1px solid var(--gray-200); border-radius: 14px; padding: 1.25rem 1.5rem; transition: all 0.3s; }
+.ideal-point:hover { box-shadow: var(--shadow-md); border-color: var(--blue-soft); transform: translateX(4px); }
+.ideal-check { width: 28px; height: 28px; flex-shrink: 0; background: var(--blue-soft); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.ideal-check svg { width: 14px; height: 14px; color: var(--blue); }
+.ideal-point p { font-size: 0.95rem; color: var(--gray-600); line-height: 1.65; }
+.ideal-cta-box { background: var(--gradient-dark); border-radius: var(--radius-lg); padding: 3rem; color: white; position: sticky; top: 120px; }
+.ideal-cta-box h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+.ideal-cta-box p { color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.7; font-size: 0.95rem; }
+
+/* ── FAQ ── */
 .faq { background: var(--white); }
-.faq-list { max-width: 800px; margin: 3rem auto 0; }
-.faq-item { border-bottom: 1px solid var(--gray-200); }
-.faq-question {
-  width: 100%; display: flex; justify-content: space-between; align-items: center;
-  padding: 1.25rem 0; background: none; border: none; cursor: pointer;
-  font-size: 1.05rem; font-weight: 600; color: var(--dark); text-align: left;
-  font-family: 'Inter', sans-serif; gap: 1rem;
-}
+.faq-list { max-width: 800px; margin: 3.5rem auto 0; }
+.faq-item { border: 1px solid var(--gray-200); border-radius: 14px; margin-bottom: 0.75rem; overflow: hidden; transition: all 0.3s; background: white; }
+.faq-item:hover { border-color: var(--gray-300); }
+.faq-item.active { border-color: var(--blue); box-shadow: 0 4px 20px rgba(41,128,185,0.08); }
+.faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; background: none; border: none; cursor: pointer; font-size: 1rem; font-weight: 600; color: var(--dark); text-align: left; font-family: 'Inter', sans-serif; gap: 1rem; transition: color 0.2s; }
 .faq-question:hover { color: var(--blue); }
-.faq-icon {
-  width: 28px; height: 28px; flex-shrink: 0;
-  border-radius: 50%; background: var(--gray-100);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.25rem; color: var(--blue);
-  transition: transform 0.3s, background 0.3s;
-}
-.faq-item.active .faq-icon { transform: rotate(45deg); background: var(--blue); color: white; }
-.faq-answer {
-  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
-}
-.faq-item.active .faq-answer { max-height: 300px; padding-bottom: 1.25rem; }
-.faq-answer p { color: var(--gray-500); line-height: 1.8; font-size: 0.95rem; }
+.faq-icon { width: 32px; height: 32px; flex-shrink: 0; border-radius: 8px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; transition: all 0.35s; }
+.faq-icon svg { width: 16px; height: 16px; color: var(--blue); transition: transform 0.35s; }
+.faq-item.active .faq-icon { background: var(--blue); }
+.faq-item.active .faq-icon svg { color: white; transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+.faq-item.active .faq-answer { max-height: 300px; padding: 0 1.5rem 1.25rem; }
+.faq-answer p { color: var(--gray-500); line-height: 1.85; font-size: 0.95rem; }
 
-/* ─── CTA ─── */
-.cta-section {
-  background: var(--gradient-blue); padding: 5rem 2rem; text-align: center;
-  position: relative; overflow: hidden;
-}
-.cta-section::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1) 0%, transparent 60%);
-}
+/* ── CTA ── */
+.cta-section { background: var(--gradient-blue); padding: 6rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.12) 0%, transparent 55%); }
 .cta-section .section-inner { position: relative; }
-.cta-section h2 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800;
-  color: white; margin-bottom: 1rem;
-}
-.cta-section p { font-size: 1.15rem; color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.cta-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: white; margin-bottom: 1rem; letter-spacing: -0.02em; }
+.cta-section p { font-size: 1.1rem; color: rgba(255,255,255,0.75); margin-bottom: 2.5rem; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.7; }
 .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-/* ─── FOOTER ─── */
-.footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 4rem 2rem 2rem; }
-.footer-inner { max-width: 1100px; margin: 0 auto; }
+/* ── FOOTER ── */
+.footer { background: var(--dark); color: rgba(255,255,255,0.55); padding: 5rem 2.5rem 2rem; }
+.footer-inner { max-width: 1180px; margin: 0 auto; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-.footer-brand p { margin-top: 1rem; font-size: 0.9rem; line-height: 1.7; max-width: 320px; }
-.footer h4 { color: white; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+.footer-brand p { margin-top: 1rem; font-size: 0.88rem; line-height: 1.75; max-width: 340px; }
+.footer h4 { color: white; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.25rem; }
 .footer ul { list-style: none; }
-.footer ul li { margin-bottom: 0.5rem; }
-.footer ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-.footer ul a:hover { color: var(--blue-light); }
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 2rem; display: flex; justify-content: space-between; align-items: center;
-  font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;
-}
+.footer ul li { margin-bottom: 0.6rem; }
+.footer ul a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.88rem; transition: all 0.2s; }
+.footer ul a:hover { color: var(--blue-light); padding-left: 4px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; flex-wrap: wrap; gap: 1rem; }
 
-/* ─── MOBILE ─── */
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .integ-grid { grid-template-columns: 1fr; }
+  .marketplace-grid { grid-template-columns: repeat(4, 1fr); }
+}
 @media (max-width: 900px) {
-  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; flex-direction: column; padding: 1.5rem 2rem; border-bottom: 1px solid var(--gray-200); box-shadow: var(--shadow-md); }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; flex-direction: column; padding: 1.5rem 2rem; border-bottom: 1px solid var(--gray-200); box-shadow: var(--shadow-md); gap: 1rem; }
   .nav-links.open { display: flex; }
   .hamburger { display: flex; }
-  .hero-inner { grid-template-columns: 1fr; text-align: center; }
-  .hero p { margin-left: auto; margin-right: auto; }
+  section { padding: 5rem 1.5rem; }
+  .hero-inner { grid-template-columns: 1fr; text-align: center; padding: 3rem 1.5rem; }
+  .hero-desc { margin-left: auto; margin-right: auto; }
   .hero-ctas { justify-content: center; }
-  .hero-stats-grid { max-width: 400px; margin: 0 auto; }
-  .about-grid { grid-template-columns: 1fr; }
+  .hero-trust { justify-content: center; }
+  .hero-float-card { display: none; }
+  .about-grid, .warehouse-showcase, .ideal-content { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
   .stats-bar-inner { grid-template-columns: 1fr 1fr; }
   .why-grid { grid-template-columns: 1fr; }
-  .ideal-points { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .marketplace-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 600px) {
-  .stats-bar-inner { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .stats-bar-inner { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .stat-number { font-size: 2rem; }
-  .hero-stats-grid { grid-template-columns: 1fr; }
-  .marketplace-grid { grid-template-columns: repeat(3, 1fr); }
+  .marketplace-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-image-badge { flex-direction: column; }
   .footer-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
+<!-- ── NAV ── -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="50,8 90,30 90,70 50,92 10,70 10,30" fill="#2980b9"/>
-        <polygon points="50,8 90,30 50,52 10,30" fill="#3498db"/>
-        <polygon points="50,52 90,30 90,70 50,92" fill="#1a5276"/>
+        <defs>
+          <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3498db"/>
+            <stop offset="100%" stop-color="#2980b9"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1a5276"/>
+            <stop offset="100%" stop-color="#154360"/>
+          </linearGradient>
+        </defs>
+        <polygon points="50,8 90,30 90,70 50,92 10,70 10,30" fill="url(#g1)"/>
+        <polygon points="50,8 90,30 50,52 10,30" fill="#5dade2" opacity="0.9"/>
+        <polygon points="50,52 90,30 90,70 50,92" fill="url(#g2)"/>
         <polygon points="50,52 10,30 10,70 50,92" fill="#2471a3"/>
-        <rect x="30" y="22" width="40" height="30" rx="2" fill="#1c2833" opacity="0.85"/>
+        <rect x="30" y="22" width="40" height="28" rx="3" fill="#0a1628" opacity="0.8"/>
       </svg>
       <div>
         <div class="nav-logo-text"><span>DLX</span> MANAGED</div>
@@ -378,8 +361,9 @@ section { padding: 6rem 2rem; }
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#services">Services</a>
+      <a href="#warehouse">Warehouse</a>
+      <a href="#integrations">Integrations</a>
       <a href="#marketplaces">Marketplaces</a>
-      <a href="#why">Why DLX</a>
       <a href="#faq">FAQ</a>
       <a href="https://calendly.com/brandon-dlxdeals/30min" target="_blank" class="btn btn-primary">Schedule a Call</a>
     </div>
@@ -389,73 +373,128 @@ section { padding: 6rem 2rem; }
   </div>
 </nav>
 
-<!-- ─── HERO ─── -->
+<!-- ── HERO ── -->
 <section class="hero">
-  <div class="hero-grid"></div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-badge">100% In-House Team</div>
+      <div class="hero-badge"><span class="hero-badge-dot"></span> 100% In-House Operations</div>
       <h1>End-to-End <span class="highlight">eCommerce &amp; 3PL</span> Solutions That Scale</h1>
-      <p>From warehouse to web storefront, DLX Managed Services handles every piece of your eCommerce operation &mdash; pick &amp; pack, marketplace management, and advertising &mdash; all under one roof.</p>
+      <p class="hero-desc">From our 130,000 sq ft warehouse to every major marketplace &mdash; DLX Managed Services handles fulfillment, sales, and advertising all under one roof. No outsourcing. Ever.</p>
       <div class="hero-ctas">
-        <a href="https://calendly.com/brandon-dlxdeals/30min" target="_blank" class="btn btn-primary btn-lg">Schedule a Call &rarr;</a>
-        <a href="#services" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.3); color: white;">Our Services</a>
+        <a href="https://calendly.com/brandon-dlxdeals/30min" target="_blank" class="btn btn-primary btn-lg">
+          Schedule a Call
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="#services" class="btn btn-ghost btn-lg">Explore Services</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          ShipHero WMS
+        </div>
+        <div class="hero-trust-item">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          API &amp; EDI Ready
+        </div>
+        <div class="hero-trust-item">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+          7+ Marketplaces
+        </div>
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-stats-grid">
-        <div class="hero-stat-card">
-          <div class="hero-stat-number">130K</div>
-          <div class="hero-stat-label">Sq Ft Warehouse Facility</div>
+      <div class="hero-float-card hero-float-card-1">
+        <div class="hero-float-icon blue">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2980b9" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
         </div>
-        <div class="hero-stat-card">
-          <div class="hero-stat-number">2M+</div>
-          <div class="hero-stat-label">Orders Shipped</div>
+        <div>
+          <div class="hero-float-text">2M+ Orders</div>
+          <div class="hero-float-sub">Shipped &amp; counting</div>
         </div>
-        <div class="hero-stat-card">
-          <div class="hero-stat-number">15+</div>
-          <div class="hero-stat-label">Years Industry Experience</div>
+      </div>
+      <div class="hero-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80" alt="Modern warehouse fulfillment center with organized shelving and bin systems">
+        <div class="hero-image-overlay"></div>
+        <div class="hero-image-badge">
+          <div class="hero-image-stat">
+            <div class="hero-image-stat-num">130K</div>
+            <div class="hero-image-stat-label">Sq Ft Facility</div>
+          </div>
+          <div class="hero-image-stat">
+            <div class="hero-image-stat-num">15+</div>
+            <div class="hero-image-stat-label">Yrs Experience</div>
+          </div>
+          <div class="hero-image-stat">
+            <div class="hero-image-stat-num">100%</div>
+            <div class="hero-image-stat-label">In-House</div>
+          </div>
         </div>
-        <div class="hero-stat-card">
-          <div class="hero-stat-number">6</div>
-          <div class="hero-stat-label">Years in Business</div>
+      </div>
+      <div class="hero-float-card hero-float-card-2">
+        <div class="hero-float-icon orange">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#ff8c42" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+        </div>
+        <div>
+          <div class="hero-float-text">High 7-Figures</div>
+          <div class="hero-float-sub">Brands under management</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── ABOUT ─── -->
+<!-- ── MARKETPLACE LOGO BAR ── -->
+<div class="logo-bar">
+  <div class="logo-bar-inner">
+    <div class="logo-bar-label">Trusted Across Major Marketplaces</div>
+    <div class="logo-bar-grid">
+      <div class="logo-bar-item">
+        <svg viewBox="0 0 120 36" height="28"><text x="0" y="26" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="26" fill="#232F3E" letter-spacing="-1">amazon</text><path d="M10 30 Q60 42 110 30" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-linecap="round"/><polygon points="108,26 115,30 108,34" fill="#FF9900"/></svg>
+      </div>
+      <div class="logo-bar-item">
+        <svg viewBox="0 0 120 36" height="28"><text x="0" y="27" font-family="Arial,sans-serif" font-weight="700" font-size="24" fill="#0071CE">Walmart</text></svg>
+      </div>
+      <div class="logo-bar-item">
+        <svg viewBox="0 0 100 36" height="26"><rect x="0" y="2" width="96" height="32" rx="3" fill="#0046BE"/><text x="48" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="#FFF">BEST</text><text x="48" y="28" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="#FFF200">BUY</text></svg>
+      </div>
+      <div class="logo-bar-item">
+        <svg viewBox="0 0 100 36" height="26"><text x="0" y="27" font-family="Arial,sans-serif" font-weight="700" font-size="24" fill="#96BF48" letter-spacing="-0.5">shopify</text></svg>
+      </div>
+      <div class="logo-bar-item">
+        <svg viewBox="0 0 100 36" height="26"><text x="0" y="27" font-family="Arial,sans-serif" font-weight="800" font-size="22" fill="#F68B1E">newegg</text></svg>
+      </div>
+      <div class="logo-bar-item">
+        <svg viewBox="0 0 70 36" height="26"><text x="0" y="28" font-family="Arial,sans-serif" font-weight="800" font-size="28" letter-spacing="-1.5"><tspan fill="#E53238">e</tspan><tspan fill="#0064D2">b</tspan><tspan fill="#F5AF02">a</tspan><tspan fill="#86B817">y</tspan></text></svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
 <section class="about" id="about">
   <div class="section-inner">
     <span class="section-label">Who We Are</span>
     <h2 class="section-title">Your Full-Service eCommerce Partner</h2>
-    <div class="about-grid">
+    <div class="about-grid reveal">
       <div class="about-content">
-        <p>DLX Managed Services is a full-service eCommerce operations company based in <strong>North Canton, Ohio</strong>. We combine 3PL warehousing, marketplace management, and advertising under one roof &mdash; so you get a single partner who understands your entire business.</p>
-        <p>With <strong>15+ years of industry expertise</strong> and a 130,000 sq ft fulfillment center, we work with brands doing high seven figures a year as well as emerging brands we're passionate about growing alongside.</p>
-        <p>Every service package is <strong>crafted specifically for each client's needs</strong>. No cookie-cutter solutions. No outsourcing. Just a dedicated in-house team focused on your success.</p>
+        <p>DLX Managed Services is a full-service eCommerce operations company headquartered in <strong>North Canton, Ohio</strong>. We combine 3PL warehousing, marketplace management, and advertising under one roof &mdash; giving you a single partner who truly understands your entire business.</p>
+        <p>With <strong>15+ years of industry expertise</strong> and a 130,000 sq ft bin-based fulfillment center powered by ShipHero WMS, we deliver the infrastructure and strategy brands need to scale. We work with brands doing high seven figures annually and emerging brands we're passionate about growing alongside.</p>
+        <p>Every service package is <strong>crafted specifically for each client</strong>. No cookie-cutter solutions. No outsourcing. Just a dedicated in-house team laser-focused on your success.</p>
       </div>
-      <div class="about-highlights">
-        <div class="about-highlight">
-          <div class="about-highlight-icon">&#9878;</div>
-          <div>
-            <h4>Everything In-House</h4>
-            <p>We never outsource. Your brand is handled by our team, in our facility, every step of the way.</p>
-          </div>
+      <div class="about-image-section">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700&q=80" alt="Organized warehouse with bin-based storage system">
         </div>
-        <div class="about-highlight">
-          <div class="about-highlight-icon">&#9881;</div>
-          <div>
-            <h4>Custom-Built Packages</h4>
-            <p>Every client gets a service package crafted exactly to their needs &mdash; no one-size-fits-all plans.</p>
+        <div class="about-badge">
+          <div class="about-badge-icon">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#2980b9" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
-        </div>
-        <div class="about-highlight">
-          <div class="about-highlight-icon">&#9733;</div>
           <div>
-            <h4>Startup to Scale</h4>
-            <p>Whether you're just launching or doing high 7-figures, we meet you where you are and grow with you.</p>
+            <div class="about-badge-text">6 Years</div>
+            <div class="about-badge-sub">In Business</div>
           </div>
         </div>
       </div>
@@ -463,91 +502,274 @@ section { padding: 6rem 2rem; }
   </div>
 </section>
 
-<!-- ─── STATS BAR ─── -->
+<!-- ── STATS ── -->
 <div class="stats-bar">
   <div class="stats-bar-inner">
-    <div class="stat-item">
-      <div class="stat-number" data-target="130000" data-suffix="+" data-display="130K+">130K+</div>
+    <div class="stat-item reveal">
+      <div class="stat-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+      </div>
+      <div class="stat-number">130K+</div>
       <div class="stat-label">Sq Ft Facility</div>
     </div>
-    <div class="stat-item">
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+      </div>
       <div class="stat-number">2M+</div>
       <div class="stat-label">Orders Shipped</div>
     </div>
-    <div class="stat-item">
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
       <div class="stat-number">15+</div>
       <div class="stat-label">Years of Expertise</div>
     </div>
-    <div class="stat-item">
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </div>
       <div class="stat-number">100%</div>
       <div class="stat-label">In-House Operations</div>
     </div>
   </div>
 </div>
 
-<!-- ─── SERVICES ─── -->
+<!-- ── SERVICES ── -->
 <section class="services" id="services">
   <div class="section-inner">
     <div class="text-center">
       <span class="section-label">What We Do</span>
       <h2 class="section-title">Comprehensive eCommerce Services</h2>
-      <p class="section-subtitle mx-auto">From warehouse operations to digital advertising, we handle every aspect of selling online so you can focus on building your brand.</p>
+      <p class="section-subtitle mx-auto">From warehouse floor to digital storefront, we handle every aspect of selling online so you can focus on building your brand.</p>
     </div>
     <div class="services-grid">
-
-      <div class="service-card">
-        <div class="service-icon">&#128230;</div>
-        <h3>Pick &amp; Pack Fulfillment</h3>
-        <p>Our 130,000 sq ft North Canton facility handles your entire fulfillment operation with speed and accuracy. Every order is picked, packed, and shipped by our in-house team with meticulous attention to detail.</p>
+      <div class="service-card reveal">
+        <div class="service-icon-wrap si-blue">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+        </div>
+        <div>
+          <h3>Pick &amp; Pack Fulfillment</h3>
+          <p>Our 130,000 sq ft bin-based warehouse handles your entire fulfillment operation with precision. Every order is picked, packed, and shipped by our in-house team using ShipHero WMS for real-time accuracy.</p>
+        </div>
       </div>
-
-      <div class="service-card">
-        <div class="service-icon">&#128259;</div>
-        <h3>Returns Processing</h3>
-        <p>Hassle-free returns management that protects your bottom line. We handle inspections, restocking, and customer communications &mdash; turning returns into an opportunity to build loyalty.</p>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon-wrap si-orange">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        </div>
+        <div>
+          <h3>Returns Processing</h3>
+          <p>Streamlined returns management that protects your bottom line. We handle inspections, grading, restocking, and customer communications &mdash; turning returns into an opportunity to build loyalty.</p>
+        </div>
       </div>
-
-      <div class="service-card">
-        <div class="service-icon">&#128202;</div>
-        <h3>Marketplace Management</h3>
-        <p>Full-service management across Amazon, Walmart, Best Buy, Shopify, eBay, Newegg, and Amazon Renewed. Listing optimization, pricing strategy, and day-to-day operations &mdash; all handled.</p>
+      <div class="service-card reveal">
+        <div class="service-icon-wrap si-green">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+        </div>
+        <div>
+          <h3>Marketplace Management</h3>
+          <p>Full-service management across Amazon, Walmart, Best Buy, Shopify, eBay, Newegg, and Amazon Renewed. Listing optimization, pricing strategy, and daily operations &mdash; all handled.</p>
+        </div>
       </div>
-
-      <div class="service-card">
-        <div class="service-icon">&#128200;</div>
-        <h3>Advertising Management</h3>
-        <p>Data-driven advertising on and off Amazon. PPC campaigns, DSP, sponsored brands, and off-platform strategies designed to maximize ROAS and drive profitable growth.</p>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon-wrap si-purple">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+        </div>
+        <div>
+          <h3>Advertising Management</h3>
+          <p>Data-driven advertising on and off Amazon. PPC campaigns, Sponsored Brands, DSP, and off-platform strategies designed to maximize ROAS and drive profitable growth &mdash; not vanity metrics.</p>
+        </div>
       </div>
-
-      <div class="service-card">
-        <div class="service-icon">&#128218;</div>
-        <h3>Listing Optimization</h3>
-        <p>Conversion-focused product listings with optimized titles, bullet points, A+ content, and backend keywords. We craft every listing to rank higher and convert better.</p>
+      <div class="service-card reveal">
+        <div class="service-icon-wrap si-orange">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+        </div>
+        <div>
+          <h3>Listing Optimization</h3>
+          <p>Conversion-focused product listings with optimized titles, bullet points, A+ content, and backend keywords. Every listing is crafted to rank higher and convert better across all platforms.</p>
+        </div>
       </div>
-
-      <div class="service-card">
-        <div class="service-icon">&#128179;</div>
-        <h3>Inventory Management</h3>
-        <p>Real-time inventory tracking, demand forecasting, and replenishment planning across all channels. Never miss a sale due to stockouts or waste money on excess inventory.</p>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon-wrap si-blue">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <div>
+          <h3>Inventory Management</h3>
+          <p>Real-time inventory tracking, demand forecasting, and replenishment planning powered by ShipHero WMS. Maintain optimal stock levels across every channel to prevent stockouts and overstock.</p>
+        </div>
       </div>
-
-      <div class="service-card">
-        <div class="service-icon">&#9734;</div>
-        <h3>Brand Strategy &amp; Growth</h3>
-        <p>Strategic planning and execution to grow your brand from launch to scale. We identify opportunities, optimize performance, and build long-term growth trajectories.</p>
+      <div class="service-card reveal">
+        <div class="service-icon-wrap si-green">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <div>
+          <h3>Brand Strategy &amp; Growth</h3>
+          <p>Strategic planning to grow your brand from launch to scale. We identify opportunities, optimize performance, and build long-term growth trajectories tailored to your category and goals.</p>
+        </div>
       </div>
-
-      <div class="service-card">
-        <div class="service-icon">&#128274;</div>
-        <h3>Account Health &amp; Compliance</h3>
-        <p>Proactive monitoring and management of your seller accounts. We keep your accounts healthy, handle compliance issues, and protect your brand from threats.</p>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon-wrap si-purple">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <div>
+          <h3>Account Health &amp; Compliance</h3>
+          <p>Proactive monitoring and management of your seller accounts across every platform. We maintain account health, handle compliance issues, and protect your brand from threats and policy changes.</p>
+        </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ─── MARKETPLACES ─── -->
+<!-- ── WAREHOUSE ── -->
+<section class="warehouse" id="warehouse">
+  <div class="section-inner">
+    <span class="section-label">Our Facility</span>
+    <h2 class="section-title">130,000 Sq Ft Bin-Based Fulfillment Center</h2>
+    <p class="section-subtitle">Located in North Canton, Ohio &mdash; our state-of-the-art warehouse is designed for speed, accuracy, and scale.</p>
+    <div class="warehouse-showcase">
+      <div class="warehouse-images reveal">
+        <div class="warehouse-img tall">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&q=80" alt="Organized bin-based warehouse shelving system">
+        </div>
+        <div class="warehouse-img">
+          <img src="https://images.unsplash.com/photo-1565891741441-64926e441838?w=500&q=80" alt="Worker scanning packages in warehouse">
+        </div>
+        <div class="warehouse-img">
+          <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=500&q=80" alt="Packages ready for shipment">
+        </div>
+      </div>
+      <div class="warehouse-features">
+        <div class="wh-feature reveal">
+          <div class="wh-feature-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          </div>
+          <div>
+            <h4>Bin-Based Pick System</h4>
+            <p>Organized bin-based storage for maximum efficiency and accuracy. Every SKU has a dedicated location tracked in real-time through our WMS.</p>
+          </div>
+        </div>
+        <div class="wh-feature reveal reveal-delay-1">
+          <div class="wh-feature-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/></svg>
+          </div>
+          <div>
+            <h4>Dedicated In-House Team</h4>
+            <p>Our warehouse staff are DLX employees &mdash; never temp workers. Trained professionals who know your products and care about quality.</p>
+          </div>
+        </div>
+        <div class="wh-feature reveal reveal-delay-2">
+          <div class="wh-feature-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div>
+            <h4>Fast &amp; Accurate Shipping</h4>
+            <p>Central Ohio location enables efficient ground shipping to the majority of the U.S. population. Same-day processing on orders received before cutoff.</p>
+          </div>
+        </div>
+        <div class="wh-feature reveal reveal-delay-3">
+          <div class="wh-feature-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          </div>
+          <div>
+            <h4>Returns Processing Center</h4>
+            <p>Full returns handling including inspection, grading, restocking, and disposition. We turn returns into recoverable revenue.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INTEGRATIONS ── -->
+<section class="integrations" id="integrations">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label">Technology</span>
+      <h2 class="section-title">Powerful Integrations Built In</h2>
+      <p class="section-subtitle mx-auto">Our technology stack connects seamlessly with your existing systems &mdash; from warehouse floor to retail partner.</p>
+    </div>
+    <div class="integ-grid">
+      <div class="integ-card reveal">
+        <div class="integ-icon wms">
+          <svg fill="none" viewBox="0 0 24 24" stroke="#5dade2" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+        </div>
+        <h3>ShipHero WMS</h3>
+        <p>Our warehouse runs on ShipHero &mdash; a leading warehouse management system built for modern eCommerce. Real-time visibility into every order, every SKU, and every shipment.</p>
+        <div class="integ-features">
+          <div class="integ-feat">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Real-time inventory sync across all channels
+          </div>
+          <div class="integ-feat">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Barcode scanning for pick accuracy
+          </div>
+          <div class="integ-feat">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Automated order routing &amp; batching
+          </div>
+          <div class="integ-feat">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Client portal with live order tracking
+          </div>
+        </div>
+      </div>
+      <div class="integ-card reveal reveal-delay-1">
+        <div class="integ-icon api">
+          <svg fill="none" viewBox="0 0 24 24" stroke="#ff8c42" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        </div>
+        <h3>API Integrations</h3>
+        <p>Custom API connections that plug directly into your existing tech stack. Whether you run a Shopify store, ERP system, or custom platform &mdash; we integrate seamlessly.</p>
+        <div class="integ-features">
+          <div class="integ-feat">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Shopify, WooCommerce &amp; BigCommerce
+          </div>
+          <div class="integ-feat">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Amazon SP-API &amp; Walmart APIs
+          </div>
+          <div class="integ-feat">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            ERP &amp; accounting system connectors
+          </div>
+          <div class="integ-feat">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Custom webhook &amp; data sync solutions
+          </div>
+        </div>
+      </div>
+      <div class="integ-card reveal reveal-delay-2">
+        <div class="integ-icon edi">
+          <svg fill="none" viewBox="0 0 24 24" stroke="#27ae60" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+        </div>
+        <h3>EDI Compliance</h3>
+        <p>Full EDI capability for major retailers like Best Buy and Walmart. We handle the technical complexity of electronic data interchange so you can focus on selling.</p>
+        <div class="integ-features">
+          <div class="integ-feat">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Purchase orders (EDI 850)
+          </div>
+          <div class="integ-feat">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Advance ship notices (EDI 856)
+          </div>
+          <div class="integ-feat">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Invoicing &amp; payment (EDI 810/820)
+          </div>
+          <div class="integ-feat">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Retailer-specific compliance testing
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARKETPLACES ── -->
 <section class="marketplaces" id="marketplaces">
   <div class="section-inner">
     <div class="text-center">
@@ -556,90 +778,45 @@ section { padding: 6rem 2rem; }
       <p class="section-subtitle mx-auto">We manage your presence across every major eCommerce platform, giving your brand maximum reach and revenue potential.</p>
     </div>
     <div class="marketplace-grid">
-      <div class="marketplace-card">
+      <div class="marketplace-card reveal">
         <div class="mp-logo">
-          <!-- Amazon -->
-          <svg viewBox="0 0 120 36" xmlns="http://www.w3.org/2000/svg" width="120" height="36">
-            <text x="0" y="26" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="26" fill="#FF9900" letter-spacing="-1">a</text>
-            <text x="17" y="26" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="26" fill="#232F3E" letter-spacing="-1">mazon</text>
-            <path d="M10 30 Q60 42 110 30" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <polygon points="108,26 115,30 108,34" fill="#FF9900"/>
-          </svg>
+          <svg viewBox="0 0 120 36" width="110" height="34"><text x="0" y="26" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="26" fill="#FF9900" letter-spacing="-1">a</text><text x="17" y="26" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="26" fill="#232F3E" letter-spacing="-1">mazon</text><path d="M10 30 Q60 42 110 30" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-linecap="round"/><polygon points="108,26 115,30 108,34" fill="#FF9900"/></svg>
         </div>
         <div class="mp-name">Amazon</div>
       </div>
-      <div class="marketplace-card">
+      <div class="marketplace-card reveal reveal-delay-1">
         <div class="mp-logo">
-          <!-- Walmart -->
-          <svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg" width="130" height="40">
-            <text x="0" y="28" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="24" fill="#0071CE">Walmart</text>
-            <g transform="translate(105,14)">
-              <line x1="0" y1="-8" x2="0" y2="8" stroke="#FFC220" stroke-width="3" stroke-linecap="round"/>
-              <line x1="-7" y1="-4" x2="7" y2="4" stroke="#FFC220" stroke-width="3" stroke-linecap="round"/>
-              <line x1="-7" y1="4" x2="7" y2="-4" stroke="#FFC220" stroke-width="3" stroke-linecap="round"/>
-            </g>
-          </svg>
+          <svg viewBox="0 0 120 36" width="110" height="34"><text x="0" y="28" font-family="Arial,sans-serif" font-weight="700" font-size="24" fill="#0071CE">Walmart</text></svg>
         </div>
         <div class="mp-name">Walmart</div>
       </div>
-      <div class="marketplace-card">
+      <div class="marketplace-card reveal">
         <div class="mp-logo">
-          <!-- Best Buy -->
-          <svg viewBox="0 0 110 44" xmlns="http://www.w3.org/2000/svg" width="110" height="44">
-            <rect x="0" y="2" width="108" height="40" rx="4" fill="#0046BE"/>
-            <text x="54" y="20" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="14" fill="#FFF">BEST</text>
-            <text x="54" y="35" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="14" fill="#FFF200">BUY</text>
-          </svg>
+          <svg viewBox="0 0 100 40" width="90" height="38"><rect x="2" y="2" width="96" height="36" rx="4" fill="#0046BE"/><text x="50" y="17" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="13" fill="#FFF">BEST</text><text x="50" y="32" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="13" fill="#FFF200">BUY</text></svg>
         </div>
         <div class="mp-name">Best Buy</div>
       </div>
-      <div class="marketplace-card">
+      <div class="marketplace-card reveal reveal-delay-1">
         <div class="mp-logo">
-          <!-- Shopify -->
-          <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" width="120" height="40">
-            <g transform="translate(2,4)">
-              <path d="M14,4 L18,2 L20,8 L24,7 L15,32 L8,32 L4,14 L10,13 L12,22 L16,8 Z" fill="#96BF48"/>
-              <path d="M18,2 L20,8 L24,7 Z" fill="#5E8E3E"/>
-            </g>
-            <text x="32" y="26" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="22" fill="#5E8E3E" letter-spacing="-0.5">shopify</text>
-          </svg>
+          <svg viewBox="0 0 100 36" width="95" height="34"><text x="0" y="27" font-family="Arial,sans-serif" font-weight="700" font-size="24" fill="#96BF48" letter-spacing="-0.5">shopify</text></svg>
         </div>
         <div class="mp-name">Shopify</div>
       </div>
-      <div class="marketplace-card">
+      <div class="marketplace-card reveal">
         <div class="mp-logo">
-          <!-- Newegg -->
-          <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" width="120" height="40">
-            <text x="0" y="27" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="22" fill="#F68B1E" letter-spacing="-0.5">newegg</text>
-            <ellipse cx="98" cy="18" rx="12" ry="10" fill="none" stroke="#F68B1E" stroke-width="2"/>
-            <ellipse cx="98" cy="19" rx="6" ry="5" fill="#F68B1E"/>
-          </svg>
+          <svg viewBox="0 0 100 36" width="95" height="34"><text x="0" y="27" font-family="Arial,sans-serif" font-weight="800" font-size="22" fill="#F68B1E">newegg</text></svg>
         </div>
         <div class="mp-name">Newegg</div>
       </div>
-      <div class="marketplace-card">
+      <div class="marketplace-card reveal reveal-delay-1">
         <div class="mp-logo">
-          <!-- eBay -->
-          <svg viewBox="0 0 90 36" xmlns="http://www.w3.org/2000/svg" width="90" height="36">
-            <text x="0" y="28" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="28" letter-spacing="-1.5">
-              <tspan fill="#E53238">e</tspan><tspan fill="#0064D2">b</tspan><tspan fill="#F5AF02">a</tspan><tspan fill="#86B817">y</tspan>
-            </text>
-          </svg>
+          <svg viewBox="0 0 70 36" width="65" height="34"><text x="0" y="28" font-family="Arial,sans-serif" font-weight="800" font-size="28" letter-spacing="-1.5"><tspan fill="#E53238">e</tspan><tspan fill="#0064D2">b</tspan><tspan fill="#F5AF02">a</tspan><tspan fill="#86B817">y</tspan></text></svg>
         </div>
         <div class="mp-name">eBay</div>
       </div>
-      <div class="marketplace-card">
+      <div class="marketplace-card reveal">
         <div class="mp-logo">
-          <!-- Amazon Renewed -->
-          <svg viewBox="0 0 120 42" xmlns="http://www.w3.org/2000/svg" width="120" height="42">
-            <text x="0" y="20" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="19" fill="#FF9900" letter-spacing="-1">a</text>
-            <text x="13" y="20" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="19" fill="#232F3E" letter-spacing="-1">mazon</text>
-            <path d="M8 24 Q45 33 82 24" stroke="#FF9900" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <polygon points="80,21 86,24 80,27" fill="#FF9900"/>
-            <text x="0" y="38" font-family="Arial, sans-serif" font-weight="600" font-size="11" fill="#232F3E" letter-spacing="2">RENEWED</text>
-            <circle cx="105" cy="20" r="14" fill="none" stroke="#007F5F" stroke-width="2"/>
-            <path d="M99,20 L104,25 L113,15" stroke="#007F5F" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <svg viewBox="0 0 120 42" width="110" height="38"><text x="5" y="20" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="17" fill="#FF9900" letter-spacing="-1">a</text><text x="16" y="20" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="17" fill="#232F3E" letter-spacing="-1">mazon</text><path d="M10 23 Q45 31 80 23" stroke="#FF9900" stroke-width="1.8" fill="none" stroke-linecap="round"/><polygon points="78,20 83,23 78,26" fill="#FF9900"/><text x="5" y="37" font-family="Arial,sans-serif" font-weight="600" font-size="10" fill="#232F3E" letter-spacing="1.5">RENEWED</text><circle cx="103" cy="22" r="12" fill="none" stroke="#007F5F" stroke-width="2"/><path d="M98,22 L102,26 L110,17" stroke="#007F5F" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="mp-name">Amazon Renewed</div>
       </div>
@@ -647,7 +824,7 @@ section { padding: 6rem 2rem; }
   </div>
 </section>
 
-<!-- ─── WHY DLX ─── -->
+<!-- ── WHY DLX ── -->
 <section class="why-dlx" id="why">
   <div class="section-inner">
     <div class="text-center">
@@ -655,63 +832,76 @@ section { padding: 6rem 2rem; }
       <h2 class="section-title">Why Brands Choose DLX</h2>
     </div>
     <div class="why-grid">
-      <div class="why-card">
-        <div class="why-icon">&#127919;</div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm0 8a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zm10 0a1 1 0 011-1h4a1 1 0 011 1v6a1 1 0 01-1 1h-4a1 1 0 01-1-1v-6z"/></svg>
+        </div>
         <h3>Single Partner, Full Solution</h3>
         <p>Stop juggling multiple vendors. We handle warehousing, marketplace sales, and advertising all in one place &mdash; creating seamless operations from end to end.</p>
       </div>
-      <div class="why-card">
-        <div class="why-icon">&#128588;</div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        </div>
         <h3>Zero Outsourcing</h3>
-        <p>Every task is handled by our in-house team at our own facility. Your brand never gets passed off to a third party you've never met.</p>
+        <p>Every task is handled by our in-house team at our own facility. Your brand never gets passed off to a third party you've never met or vetted.</p>
       </div>
-      <div class="why-card">
-        <div class="why-icon">&#128200;</div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+        </div>
         <h3>Built to Grow With You</h3>
-        <p>Whether you're just starting out or scaling past 7 figures, our custom service packages evolve with your business at every stage.</p>
+        <p>Whether you're just starting out or scaling past 7 figures, our custom service packages evolve with your business at every stage of growth.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── IDEAL CLIENT ─── -->
-<section class="ideal">
+<!-- ── IDEAL CLIENT ── -->
+<section class="ideal" id="ideal">
   <div class="section-inner">
-    <div class="text-center">
-      <span class="section-label">Is DLX Right For You?</span>
-      <h2 class="section-title">Who We Work With</h2>
-      <p class="section-subtitle mx-auto">We partner with brands at every stage of growth. If any of these sound like you, let's talk.</p>
-    </div>
-    <div class="ideal-points">
-      <div class="ideal-point">
-        <div class="check">&#10003;</div>
-        <p>You're an eCommerce brand selling on Amazon, Walmart, or other major marketplaces and want expert management.</p>
+    <span class="section-label">Is DLX Right For You?</span>
+    <h2 class="section-title">Who We Work With</h2>
+    <div class="ideal-content">
+      <div class="ideal-points">
+        <div class="ideal-point reveal">
+          <div class="ideal-check"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+          <p>You're an eCommerce brand selling on Amazon, Walmart, or other major marketplaces and want expert management.</p>
+        </div>
+        <div class="ideal-point reveal reveal-delay-1">
+          <div class="ideal-check"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+          <p>You need reliable 3PL fulfillment with pick &amp; pack, returns processing, and real-time inventory visibility.</p>
+        </div>
+        <div class="ideal-point reveal reveal-delay-2">
+          <div class="ideal-check"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+          <p>You're spending on advertising but aren't confident you're getting the best return on your investment.</p>
+        </div>
+        <div class="ideal-point reveal reveal-delay-3">
+          <div class="ideal-check"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+          <p>You're tired of managing multiple vendors and want a single partner who handles everything under one roof.</p>
+        </div>
+        <div class="ideal-point reveal">
+          <div class="ideal-check"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+          <p>You need EDI compliance and API integrations for major retail partners like Best Buy and Walmart.</p>
+        </div>
+        <div class="ideal-point reveal reveal-delay-1">
+          <div class="ideal-check"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+          <p>You value transparency, in-house teams, and custom-built strategies over cookie-cutter agency packages.</p>
+        </div>
       </div>
-      <div class="ideal-point">
-        <div class="check">&#10003;</div>
-        <p>You need reliable 3PL fulfillment with pick &amp; pack, returns processing, and real-time inventory visibility.</p>
-      </div>
-      <div class="ideal-point">
-        <div class="check">&#10003;</div>
-        <p>You're spending on advertising but aren't sure you're getting the best return on your investment.</p>
-      </div>
-      <div class="ideal-point">
-        <div class="check">&#10003;</div>
-        <p>You're tired of managing multiple vendors and want a single partner who handles everything under one roof.</p>
-      </div>
-      <div class="ideal-point">
-        <div class="check">&#10003;</div>
-        <p>You're a high-7-figure brand looking for operational excellence, or a newer brand looking for a partner to grow with.</p>
-      </div>
-      <div class="ideal-point">
-        <div class="check">&#10003;</div>
-        <p>You value transparency, in-house teams, and custom-built strategies over cookie-cutter agency packages.</p>
+      <div class="ideal-cta-box reveal">
+        <h3>Ready to See If We're a Fit?</h3>
+        <p>Schedule a free consultation and we'll learn about your brand, your goals, and your pain points. From there, we'll craft a custom proposal tailored exactly to your needs.</p>
+        <a href="https://calendly.com/brandon-dlxdeals/30min" target="_blank" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;">
+          Schedule a Call
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── FAQ ─── -->
+<!-- ── FAQ ── -->
 <section class="faq" id="faq">
   <div class="section-inner">
     <div class="text-center">
@@ -719,115 +909,47 @@ section { padding: 6rem 2rem; }
       <h2 class="section-title">Frequently Asked Questions</h2>
     </div>
     <div class="faq-list">
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-          What services does DLX Managed Services offer?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer"><p>We provide full-service 3PL warehousing (pick &amp; pack, returns processing, inventory management), marketplace management across Amazon, Walmart, Best Buy, Shopify, Newegg, eBay, and Amazon Renewed, as well as advertising management on and off Amazon. Every service is handled 100% in-house at our North Canton, Ohio facility.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-          Do you outsource any of your services?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer"><p>Never. Everything we do is handled by our in-house team at our own 130,000 sq ft facility. Your brand is never passed off to a third party. This ensures quality control, accountability, and seamless communication across all services.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-          Do I need to use all your services, or can I pick and choose?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer"><p>Every client's service package is crafted specifically for their needs. You can use our 3PL services alone, marketplace management alone, advertising alone, or any combination. We build around what your brand actually needs.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-          What size brands do you work with?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer"><p>We work with brands at every stage &mdash; from those just starting out to established brands doing high seven figures annually. We're passionate about growing alongside emerging brands and have the infrastructure to support large-scale operations.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-          Where is your warehouse located?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer"><p>Our 130,000 sq ft fulfillment center is located in North Canton, Ohio. This central location provides efficient shipping coverage to the majority of the U.S. population.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-          How do you handle advertising?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer"><p>We manage advertising both on Amazon (PPC, Sponsored Brands, DSP) and off-Amazon platforms. Our approach is data-driven and focused on profitable growth &mdash; we optimize for ROAS and real profitability, not vanity metrics.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-          What marketplaces do you manage?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer"><p>We manage seller accounts on Amazon, Walmart, Best Buy, Shopify, Newegg, eBay, and Amazon Renewed. We can launch you on new platforms or optimize your existing presence across all of them.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-          How long have you been in business?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer"><p>DLX Managed Services has been in business for 6 years, but our team brings over 15 years of combined industry experience. We've shipped over 2 million orders and continue to grow with our clients every day.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-          How do I get started?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer"><p>Schedule a call with our team and we'll learn about your brand, your goals, and your pain points. From there, we'll put together a custom proposal tailored to exactly what you need. There's no obligation &mdash; just a conversation to see if we're the right fit.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-          Are there long-term contracts?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer"><p>We believe in earning your business every month. Our contract terms are discussed during your initial consultation and are designed to be fair and flexible. We want you to stay because of results, not because of a contract.</p></div>
-      </div>
-
+      <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">What services does DLX Managed Services offer?<span class="faq-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer"><p>We provide full-service 3PL warehousing (pick &amp; pack, returns processing, inventory management), marketplace management across Amazon, Walmart, Best Buy, Shopify, Newegg, eBay, and Amazon Renewed, as well as advertising management on and off Amazon. Everything is handled 100% in-house at our 130,000 sq ft North Canton, Ohio facility.</p></div></div>
+      <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Do you outsource any of your services?<span class="faq-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer"><p>Never. Everything we do is handled by our in-house team at our own facility. Your brand is never passed off to a third party. This ensures quality control, accountability, and seamless communication across all services.</p></div></div>
+      <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">What is ShipHero and how does it benefit my brand?<span class="faq-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer"><p>ShipHero is our warehouse management system (WMS) that powers our entire fulfillment operation. It provides real-time inventory visibility, barcode-verified picking accuracy, automated order routing, and a client portal so you always know exactly what's happening with your inventory and orders.</p></div></div>
+      <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Do you support API and EDI integrations?<span class="faq-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer"><p>Yes. We support full API integrations with platforms like Shopify, WooCommerce, Amazon SP-API, and more. We're also EDI compliant for major retailers including Best Buy and Walmart &mdash; handling purchase orders, ASNs, invoicing, and compliance testing.</p></div></div>
+      <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Do I need to use all your services, or can I pick and choose?<span class="faq-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer"><p>Every client's service package is crafted specifically for their needs. You can use our 3PL services alone, marketplace management alone, advertising alone, or any combination. We build around what your brand actually needs &mdash; no forced bundles.</p></div></div>
+      <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">What size brands do you work with?<span class="faq-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer"><p>We work with brands at every stage &mdash; from those just launching to established brands doing high seven figures annually. We're passionate about growing alongside emerging brands and have the infrastructure to support large-scale operations.</p></div></div>
+      <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Where is your warehouse located?<span class="faq-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer"><p>Our 130,000 sq ft fulfillment center is located in North Canton, Ohio. This central location enables efficient ground shipping coverage to the majority of the U.S. population.</p></div></div>
+      <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">How do you handle advertising?<span class="faq-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer"><p>We manage advertising both on Amazon (PPC, Sponsored Brands, DSP) and off-Amazon platforms. Our approach is data-driven and focused on profitable growth &mdash; we optimize for ROAS and real profitability, not vanity metrics.</p></div></div>
+      <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">How do I get started?<span class="faq-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer"><p>Schedule a call with our team and we'll learn about your brand, goals, and pain points. From there, we'll put together a custom proposal tailored to exactly what you need. No obligation &mdash; just a conversation to see if we're the right fit.</p></div></div>
+      <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Are there long-term contracts?<span class="faq-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span></button><div class="faq-answer"><p>We believe in earning your business every month. Our contract terms are discussed during your initial consultation and are designed to be fair and flexible. We want you to stay because of results, not because of a contract.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ─── CTA ─── -->
+<!-- ── CTA ── -->
 <section class="cta-section" id="contact">
   <div class="section-inner">
     <h2>Ready to Scale Your Brand?</h2>
     <p>Let's talk about how DLX Managed Services can streamline your operations and accelerate your growth. Schedule a free consultation today.</p>
     <div class="cta-buttons">
-      <a href="https://calendly.com/brandon-dlxdeals/30min" target="_blank" class="btn btn-white btn-lg">Schedule a Call &rarr;</a>
-      <a href="mailto:brandon@dlxdeals.com" class="btn btn-lg" style="border: 2px solid rgba(255,255,255,0.4); color: white;">Email Us</a>
+      <a href="https://calendly.com/brandon-dlxdeals/30min" target="_blank" class="btn btn-white btn-lg">
+        Schedule a Call
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a href="mailto:brandon@dlxdeals.com" class="btn btn-ghost btn-lg">Email Us</a>
     </div>
   </div>
 </section>
 
-<!-- ─── FOOTER ─── -->
+<!-- ── FOOTER ── -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="#" class="nav-logo" style="margin-bottom: 0.5rem;">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 40px; height: 40px;">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 38px; height: 38px;">
             <polygon points="50,8 90,30 90,70 50,92 10,70 10,30" fill="#2980b9"/>
-            <polygon points="50,8 90,30 50,52 10,30" fill="#3498db"/>
+            <polygon points="50,8 90,30 50,52 10,30" fill="#5dade2" opacity="0.9"/>
             <polygon points="50,52 90,30 90,70 50,92" fill="#1a5276"/>
             <polygon points="50,52 10,30 10,70 50,92" fill="#2471a3"/>
-            <rect x="30" y="22" width="40" height="30" rx="2" fill="#1c2833" opacity="0.85"/>
+            <rect x="30" y="22" width="40" height="28" rx="3" fill="#0a1628" opacity="0.8"/>
           </svg>
           <div>
             <div class="nav-logo-text"><span>DLX</span> MANAGED</div>
@@ -843,15 +965,16 @@ section { padding: 6rem 2rem; }
           <li><a href="#services">Returns Processing</a></li>
           <li><a href="#services">Marketplace Management</a></li>
           <li><a href="#services">Advertising</a></li>
+          <li><a href="#services">Listing Optimization</a></li>
         </ul>
       </div>
       <div>
-        <h4>Marketplaces</h4>
+        <h4>Technology</h4>
         <ul>
-          <li><a href="#marketplaces">Amazon</a></li>
-          <li><a href="#marketplaces">Walmart</a></li>
-          <li><a href="#marketplaces">Best Buy</a></li>
-          <li><a href="#marketplaces">Shopify &amp; More</a></li>
+          <li><a href="#integrations">ShipHero WMS</a></li>
+          <li><a href="#integrations">API Integrations</a></li>
+          <li><a href="#integrations">EDI Compliance</a></li>
+          <li><a href="#marketplaces">Marketplaces</a></li>
         </ul>
       </div>
       <div>
@@ -859,7 +982,7 @@ section { padding: 6rem 2rem; }
         <ul>
           <li><a href="mailto:brandon@dlxdeals.com">brandon@dlxdeals.com</a></li>
           <li><a href="https://calendly.com/brandon-dlxdeals/30min" target="_blank">Schedule a Call</a></li>
-          <li><span style="color: rgba(255,255,255,0.5);">North Canton, OH</span></li>
+          <li><span style="color: rgba(255,255,255,0.4);">North Canton, OH</span></li>
         </ul>
       </div>
     </div>
@@ -871,40 +994,23 @@ section { padding: 6rem 2rem; }
 </footer>
 
 <script>
-// Nav scroll effect
+// Nav scroll
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
 });
-
-// Smooth scroll for anchor links
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      document.getElementById('navLinks').classList.remove('open');
-    }
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { t.scrollIntoView({ behavior: 'smooth', block: 'start' }); document.getElementById('navLinks').classList.remove('open'); }
   });
 });
-
-// Intersection Observer for fade-in animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.service-card, .why-card, .marketplace-card, .about-highlight, .ideal-point').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  observer.observe(el);
-});
+// Reveal on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
-
 </body>
 </html>
